@@ -348,7 +348,7 @@ export default function BusesPage() {
               </Button>
               <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" onClick={() => setIsModalOpen(true)}>
+                  <Button size="lg" onClick={() => { setEditingBus(null); setIsModalOpen(true); }}>
                     <PlusCircle className="mr-2 h-5 w-5" /> Add New Bus
                   </Button>
                 </DialogTrigger>
@@ -449,7 +449,7 @@ export default function BusesPage() {
                           <Button type="button" variant="ghost" onClick={() => setIsModalOpen(false)}>Cancel</Button>
                           <Button type="submit" disabled={form.formState.isSubmitting}>
                             {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            Save Changes
+                            {editingBus ? "Save Changes" : "Add Bus"}
                           </Button>
                       </div>
                     </form>
@@ -720,3 +720,5 @@ export default function BusesPage() {
     </SidebarProvider>
   );
 }
+
+    
