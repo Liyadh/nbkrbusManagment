@@ -121,13 +121,13 @@ export default function LoginPage() {
 
   return (
     <div className="relative min-h-screen w-full font-body">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-teal-500 to-accent bg-[length:200%_200%] animate-gradient-animation -z-20" />
+      <div className="absolute inset-0 bg-primary -z-20" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,hsl(var(--primary-foreground)_/_0.1)_1px,transparent_0)] bg-[length:2rem_2rem] opacity-30 -z-10" />
 
       <main className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8">
         <div className="w-full max-w-md bg-card/80 backdrop-blur-lg rounded-2xl shadow-2xl p-8 sm:p-12 border animate-in fade-in-0 slide-in-from-bottom-12 duration-500 ease-out">
           <div className="flex flex-col items-center text-center mb-8">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 shadow-lg">
+            <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center mb-4 shadow-lg">
               <Bus className="w-10 h-10 text-primary-foreground" />
             </div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -273,3 +273,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+    
