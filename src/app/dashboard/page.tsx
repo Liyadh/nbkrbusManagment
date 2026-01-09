@@ -269,10 +269,6 @@ export default function DashboardPage() {
                 className="w-full rounded-lg bg-muted pl-8 md:w-[200px] lg:w-[320px]"
               />
             </div>
-            <Button variant="outline">
-              <PlusCircle className="mr-2 h-4 w-4" />
-              Add User
-            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -310,6 +306,17 @@ export default function DashboardPage() {
         </header>
 
         <main className="flex-1 overflow-auto p-4 md:p-6">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold">Dashboard</h1>
+              <p className="text-muted-foreground">Welcome to the central command for bus operations.</p>
+            </div>
+            <Button>
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Add User
+            </Button>
+          </div>
+          
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <KpiCard
               title="Active Trips"
