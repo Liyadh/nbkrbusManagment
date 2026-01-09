@@ -24,9 +24,9 @@ interface DriverProfileDialogProps {
     id: number;
     name: string;
     phone: string;
-    dob: Date;
+    dob: Date | string;
     licenseNo: string;
-    licenseExpiry: Date;
+    licenseExpiry: Date | string;
     assignedBus?: string;
     status: "Active" | "On Leave" | "Inactive";
     avatar: string;
@@ -40,6 +40,18 @@ const getInitials = (name: string) => {
 
 export function DriverProfileDialog({ open, onClose, driver }: DriverProfileDialogProps) {
   if (!driver) return null;
+
+  const formatDate = (date: Date | string) => {
+    try {
+      const dateObj = typeof date === 'string' ? new Date(date) : date;
+      if (isNaN(dateObj.getTime())) {
+          return "Invalid Date";
+      }
+      return format(dateObj, "PPP");
+    } catch (e) {
+      return "Invalid Date";
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
@@ -66,7 +78,7 @@ export function DriverProfileDialog({ open, onClose, driver }: DriverProfileDial
                 <Card>
                     <CardHeader><CardTitle className="text-lg">Personal Information</CardTitle></CardHeader>
                     <CardContent className="text-sm space-y-2">
-                        <div className="flex justify-between"><span>Date of Birth:</span> <span className="font-medium">{format(driver.dob, "PPP")}</span></div>
+                        <div className="flex justify-between"><span>Date of Birth:</span> <span className="font-medium">{formatDate(driver.dob)}</span></div>
                         <div className="flex justify-between"><span>Contact:</span> <span className="font-medium">{driver.phone}</span></div>
                     </CardContent>
                 </Card>
@@ -74,7 +86,7 @@ export function DriverProfileDialog({ open, onClose, driver }: DriverProfileDial
                     <CardHeader><CardTitle className="text-lg">License & Assignment</CardTitle></CardHeader>
                     <CardContent className="text-sm space-y-2">
                         <div className="flex justify-between"><span>License No:</span> <span className="font-medium">{driver.licenseNo}</span></div>
-                        <div className="flex justify-between"><span>License Expiry:</span> <span className="font-medium">{format(driver.licenseExpiry, "PPP")}</span></div>
+                        <div className="flex justify-between"><span>License Expiry:</span> <span className="font-medium">{formatDate(driver.licenseExpiry)}</span></div>
                         <Separator className="my-2" />
                         <div className="flex justify-between"><span>Assigned Bus:</span> <span className="font-medium">{driver.assignedBus || "Unassigned"}</span></div>
                     </CardContent>
@@ -88,5 +100,3 @@ export function DriverProfileDialog({ open, onClose, driver }: DriverProfileDial
     </Dialog>
   );
 }
-
-    
