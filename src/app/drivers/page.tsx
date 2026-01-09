@@ -103,6 +103,9 @@ import {
 import { cn } from "@/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import { DriverProfileDialog } from "@/components/feature/DriverProfileDialog";
+import { ManageDriverDocsDialog } from "@/components/feature/ManageDriverDocsDialog";
+
 
 const driverSchema = z.object({
   name: z.string().min(1, "Full name is required."),
@@ -129,6 +132,11 @@ export default function DriversPage() {
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [editingDriver, setEditingDriver] = React.useState<(Driver & { id: number }) | null>(null);
+
+  const [isViewModalOpen, setIsViewModalOpen] = React.useState(false);
+  const [viewingDriver, setViewingDriver] = React.useState<(Driver & { id: number; avatar: string }) | null>(null);
+  const [isDocsModalOpen, setIsDocsModalOpen] = React.useState(false);
+  const [docsDriver, setDocsDriver] = React.useState<(Driver & { id: number }) | null>(null);
 
   const form = useForm<Driver>({
     resolver: zodResolver(driverSchema),
@@ -191,6 +199,16 @@ export default function DriversPage() {
   const handleEditClick = (driver: Driver & { id: number }) => {
     setEditingDriver(driver);
     setIsModalOpen(true);
+  };
+
+  const handleViewClick = (driver: Driver & { id: number; avatar: string }) => {
+    setViewingDriver(driver);
+    setIsViewModalOpen(true);
+  };
+
+  const handleDocsClick = (driver: Driver & { id: number }) => {
+    setDocsDriver(driver);
+    setIsDocsModalOpen(true);
   };
 
   const getDocStatus = (date: Date) => {
@@ -544,7 +562,7 @@ export default function DriversPage() {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end">
                                   <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                  <DropdownMenuItem>
+                                  <DropdownMenuItem onClick={() => handleViewClick(driver)}>
                                     <Eye className="mr-2 h-4 w-4" />
                                     View Profile
                                   </DropdownMenuItem>
@@ -552,7 +570,7 @@ export default function DriversPage() {
                                     <FilePen className="mr-2 h-4 w-4" />
                                     Edit Driver
                                   </DropdownMenuItem>
-                                  <DropdownMenuItem>
+                                  <DropdownMenuItem onClick={() => handleDocsClick(driver)}>
                                     <FileText className="mr-2 h-4 w-4" />
                                     Manage Documents
                                   </DropdownMenuItem>
@@ -593,6 +611,22 @@ export default function DriversPage() {
           </Card>
         </main>
       </SidebarInset>
+
+      {viewingDriver && (
+        <DriverProfileDialog
+          open={isViewModalOpen}
+          onClose={() => setIsViewModalOpen(false)}
+          driver={viewingDriver}
+        />
+      )}
+
+      {docsDriver && (
+        <ManageDriverDocsDialog
+          open={isDocsModalOpen}
+          onClose={() => setIsDocsModalOpen(false)}
+          driver={docsDriver}
+        />
+      )}
     </SidebarProvider>
   );
 }
