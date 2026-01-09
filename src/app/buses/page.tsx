@@ -105,7 +105,7 @@ import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 
 const busSchema = z.object({
-  busNo: z.string().min(1, "Bus number is required."),
+  busNo: z.string().regex(/^[0-9]+$/, "Bus number must be numeric.").min(1, "Bus number is required."),
   capacity: z.coerce.number().min(1, "Capacity must be at least 1."),
   regNo: z.string().min(1, "Registration number is required."),
   model: z.string().min(1, "Model/Year is required."),
@@ -126,11 +126,11 @@ type UpdateStatus = z.infer<typeof updateStatusSchema>;
 
 
 const sampleBuses: (Bus & { id: number; lastTrip: string })[] = [
-  { id: 1, busNo: "AP01AB1234", capacity: 50, driver: "Raj Kumar", status: "Active", regNo: "AP01AB1234", lastTrip: "Today 4:30PM", model: "2022 Ashok Leyland" },
-  { id: 2, busNo: "AP01AB5678", capacity: 40, driver: "Suresh Kumar", status: "Maintenance", regNo: "AP01AB5678", lastTrip: "Yday 3:15PM", model: "2021 Tata Marcopolo" },
-  { id: 3, busNo: "AP01AC7890", capacity: 55, driver: "Ramesh Patel", status: "Active", regNo: "AP01AC7890", lastTrip: "Today 5:00PM", model: "2023 Eicher Starline" },
-  { id: 4, busNo: "AP01AD9876", capacity: 50, driver: "Anil Sharma", status: "Inactive", regNo: "AP01AD9876", lastTrip: "2 days ago", model: "2020 BharatBenz" },
-  { id: 5, busNo: "AP01AE4321", capacity: 45, driver: "Vikram Singh", status: "Active", regNo: "AP01AE4321", lastTrip: "Today 4:45PM", model: "2022 Ashok Leyland" },
+  { id: 1, busNo: "01", capacity: 50, driver: "Raj Kumar", status: "Active", regNo: "AP01AB1234", lastTrip: "Today 4:30PM", model: "2022 Ashok Leyland" },
+  { id: 2, busNo: "02", capacity: 40, driver: "Suresh Kumar", status: "Maintenance", regNo: "AP01AB5678", lastTrip: "Yday 3:15PM", model: "2021 Tata Marcopolo" },
+  { id: 3, busNo: "03", capacity: 55, driver: "Ramesh Patel", status: "Active", regNo: "AP01AC7890", lastTrip: "Today 5:00PM", model: "2023 Eicher Starline" },
+  { id: 4, busNo: "04", capacity: 50, driver: "Anil Sharma", status: "Inactive", regNo: "AP01AD9876", lastTrip: "2 days ago", model: "2020 BharatBenz" },
+  { id: 5, busNo: "05", capacity: 45, driver: "Vikram Singh", status: "Active", regNo: "AP01AE4321", lastTrip: "Today 4:45PM", model: "2022 Ashok Leyland" },
 ];
 
 export default function BusesPage() {
@@ -367,7 +367,7 @@ export default function BusesPage() {
                             <FormItem>
                               <FormLabel>Bus No.</FormLabel>
                               <FormControl>
-                                <Input placeholder="AP01ABXXXX" {...field} />
+                                <Input type="number" placeholder="01" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -708,5 +708,7 @@ export default function BusesPage() {
     </SidebarProvider>
   );
 }
+
+    
 
     
