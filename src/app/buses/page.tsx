@@ -145,6 +145,12 @@ export default function BusesPage() {
   const form = useForm<Bus>({
     resolver: zodResolver(busSchema),
     defaultValues: {
+      busNo: "",
+      capacity: 0,
+      regNo: "",
+      model: "",
+      driver: "",
+      helper: "",
       status: "Active",
     },
   });
