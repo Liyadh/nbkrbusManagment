@@ -121,7 +121,7 @@ export default function LoginPage() {
 
   return (
     <div className="relative min-h-screen w-full font-body">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-blue-500 to-accent bg-[length:200%_200%] animate-gradient-animation -z-20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-teal-500 to-accent bg-[length:200%_200%] animate-gradient-animation -z-20" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,hsl(var(--primary-foreground)_/_0.1)_1px,transparent_0)] bg-[length:2rem_2rem] opacity-30 -z-10" />
 
       <main className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8">
