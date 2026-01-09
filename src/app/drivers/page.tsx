@@ -314,7 +314,6 @@ export default function DriversPage() {
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="space-y-4">
-                        <h3 className="text-lg font-medium border-b pb-2">Personal Info</h3>
                         <FormField control={form.control} name="name" render={({ field }) => (
                           <FormItem>
                             <FormLabel>Full Name</FormLabel>
@@ -357,7 +356,6 @@ export default function DriversPage() {
                         </FormItem>
                       </div>
                       <div className="space-y-4">
-                        <h3 className="text-lg font-medium border-b pb-2">License &amp; Experience</h3>
                         <FormField control={form.control} name="licenseNo" render={({ field }) => (
                             <FormItem><FormLabel>License No.</FormLabel><FormControl><Input placeholder="DLXXXXXXXX" {...field} /></FormControl><FormMessage /></FormItem>
                         )} />
@@ -388,7 +386,6 @@ export default function DriversPage() {
                         </FormItem>
                       </div>
                        <div className="space-y-4">
-                        <h3 className="text-lg font-medium border-b pb-2">Assignment &amp; Status</h3>
                          <FormField control={form.control} name="assignedBus" render={({ field }) => (
                            <FormItem>
                             <FormLabel>Assigned Bus</FormLabel>
@@ -599,5 +596,3 @@ export default function DriversPage() {
     </SidebarProvider>
   );
 }
-
-    
