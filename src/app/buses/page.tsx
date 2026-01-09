@@ -106,6 +106,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const busSchema = z.object({
   busNo: z.string().regex(/^[0-9]+$/, "Bus number must be numeric.").min(1, "Bus number is required."),
+  preferredNumber: z.string().optional(),
   capacity: z.coerce.number().min(1, "Capacity must be at least 1."),
   regNo: z.string().min(1, "Registration number is required."),
   model: z.string().min(1, "Model/Year is required."),
@@ -146,6 +147,7 @@ export default function BusesPage() {
     resolver: zodResolver(busSchema),
     defaultValues: {
       busNo: "",
+      preferredNumber: "",
       capacity: 0,
       regNo: "",
       model: "",
@@ -165,6 +167,7 @@ export default function BusesPage() {
     } else if (!isModalOpen) {
       form.reset({
         busNo: "",
+        preferredNumber: "",
         capacity: 0,
         regNo: "",
         model: "",
@@ -368,6 +371,15 @@ export default function BusesPage() {
                               <FormLabel>Bus No.</FormLabel>
                               <FormControl>
                                 <Input type="number" placeholder="01" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )} />
+                           <FormField control={form.control} name="preferredNumber" render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Preferred Number (Optional)</FormLabel>
+                              <FormControl>
+                                <Input placeholder="e.g., 9999" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -708,7 +720,3 @@ export default function BusesPage() {
     </SidebarProvider>
   );
 }
-
-    
-
-    
