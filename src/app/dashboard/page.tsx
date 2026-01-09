@@ -21,7 +21,8 @@ import {
   User,
   Users,
   FileText,
-  Loader2
+  Loader2,
+  PlusCircle,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -268,6 +269,10 @@ export default function DashboardPage() {
                 className="w-full rounded-lg bg-muted pl-8 md:w-[200px] lg:w-[320px]"
               />
             </div>
+            <Button variant="outline">
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Add User
+            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -454,6 +459,3 @@ export default function DashboardPage() {
     </SidebarProvider>
   );
 }
-
-    
-    
