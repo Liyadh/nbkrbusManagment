@@ -412,14 +412,6 @@ export default function DashboardPage() {
                     Critical and warning alerts from the fleet.
                   </CardDescription>
                 </div>
-                 <div className="flex items-center gap-2">
-                  <Button variant="destructive" size="sm">
-                    Clear All
-                  </Button>
-                   <Button variant="secondary" size="sm">
-                    SMS All
-                  </Button>
-                </div>
               </CardHeader>
               <CardContent>
                 <Table>
