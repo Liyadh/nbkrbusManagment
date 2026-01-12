@@ -408,15 +408,6 @@ export default function TripsPage() {
             </TabsContent>
           </Tabs>
         </main>
-         <footer className="sticky bottom-0 border-t bg-destructive text-destructive-foreground px-4 py-2 text-sm font-medium z-10">
-          <div className="flex items-center justify-center gap-4">
-            <Siren className="h-5 w-5 animate-pulse" />
-            <span>Emergency Controls:</span>
-            <Button variant="destructive" className="bg-red-700 hover:bg-red-800">Stop All Trips</Button>
-            <Button variant="outline" className="text-destructive-foreground border-destructive-foreground/50 hover:bg-destructive-foreground/10">Bulk SMS</Button>
-            <Button variant="outline" className="text-destructive-foreground border-destructive-foreground/50 hover:bg-destructive-foreground/10">Call All Drivers</Button>
-          </div>
-        </footer>
          <ScheduleTripDialog
             open={isScheduleOpen}
             onClose={() => setIsScheduleOpen(false)}
@@ -426,6 +417,3 @@ export default function TripsPage() {
     </SidebarProvider>
   );
 }
-
-    
-    
