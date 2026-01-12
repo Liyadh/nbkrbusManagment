@@ -159,6 +159,11 @@ export default function BusesPage() {
 
   const statusForm = useForm<UpdateStatus>({
     resolver: zodResolver(updateStatusSchema),
+    defaultValues: {
+      busId: "",
+      newStatus: "Active",
+      reason: "",
+    },
   });
 
   React.useEffect(() => {
@@ -184,11 +189,13 @@ export default function BusesPage() {
       statusForm.reset({
         busId: String(statusBus.id),
         newStatus: statusBus.status,
+        reason: "",
       });
     } else if (!isStatusModalOpen) {
       statusForm.reset({
         busId: "",
         reason: "",
+        newStatus: "Active",
       });
       setStatusBus(null);
     }
