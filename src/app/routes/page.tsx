@@ -108,8 +108,6 @@ const sampleRoutes: Route[] = [
         { id: 3, name: "Rural Village", distance: "8.1 km", cumulative: "10.4 km", time: "06:48 AM", wait: "2 min" },
         { id: 12, name: "College Gate", distance: "3.2 km", cumulative: "28.5 km", time: "07:45 AM", wait: "-" },
     ]},
-    { id: 2, name: "Rural Area → College", status: "Scheduled", stops: 15, distance: "35.2 km", duration: "90 min", stopDetails: [] },
-    { id: 3, name: "City Center → College", status: "Inactive", stops: 8, distance: "15.0 km", duration: "45 min", stopDetails: [] },
 ];
 
 export default function RoutesPage() {
@@ -440,5 +438,3 @@ export default function RoutesPage() {
     </SidebarProvider>
   );
 }
-
-    
